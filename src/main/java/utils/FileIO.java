@@ -20,7 +20,7 @@ public class FileIO {
             Scanner sc = new Scanner(file);
             String bigNumber1String = sc.next();
             String bigNumber2String = sc.next();
-            return new Pair<BigNumber, BigNumber>(BigNumberService.transformStringToBigNumber(bigNumber1String),
+            return new Pair<>(BigNumberService.transformStringToBigNumber(bigNumber1String),
                     BigNumberService.transformStringToBigNumber(bigNumber2String));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -33,10 +33,13 @@ public class FileIO {
             File outputFile = new File(fileName);
             outputFile.createNewFile();
             PrintWriter writer = new PrintWriter(outputFile);
-            if(result.getBigNumberSign() == Sign.NEGATIVE){
+            if (result.getBigNumberSign() == Sign.NEGATIVE) {
                 writer.print("-");
             }
-            writer.println(result.getActualNumber());
+            for (int i = 0; i < result.getActualNumber().length; i++) {
+                writer.print(result.getActualNumber()[i]);
+            }
+            writer.println();
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

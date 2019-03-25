@@ -13,7 +13,9 @@ public class Main {
         if(result.getBigNumberSign() == Sign.NEGATIVE){
             System.out.print("-");
         }
-        System.out.println(result.getActualNumber());
+        for (int i = 0; i < result.getActualNumber().length; i++) {
+            System.out.print(result.getActualNumber()[i]);
+        }
         System.out.println();
     }
 
